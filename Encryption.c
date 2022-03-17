@@ -1,0 +1,51 @@
+
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main(){
+    char s[100],a[100][100];
+    int i,j,l,p=0,k;
+    gets(s);
+    // for removing blank spaces
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]==' '){
+            for(j=i;s[j]!='\0';j++)
+            s[j]=s[j+1];
+        }
+    }
+    /// for makeing grid
+    l=strlen(s);
+    p=sqrt(l);
+    k=0;
+    if(p*p==l){
+        for(i=0;i<p;i++){
+            for(j=0;j<p;j++,k++){
+                a[i][j]=s[k];
+            }
+        }
+    }
+    else if(p*(p+1)>=l){
+        for(i=0;i<p;i++){
+            for(j=0;j<p+1;j++,k++){
+                a[i][j]=s[k];
+            }
+        }
+    }
+    else{
+        for(i=0;i<p+1;i++){
+            for(j=0;j<p+1;j++,k++){
+                a[i][j]=s[k];
+            }
+        }
+    }
+    /// for printing output 
+    for(i=0;i<=p;i++){
+        for(j=0;j<=p;j++){
+            if(a[j][i]!='\0')
+            printf("%c",a[j][i]);
+        }
+        printf(" ");
+    }
+}
+
